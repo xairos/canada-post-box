@@ -12,6 +12,7 @@
               📮
             </text>
           </svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="style.css">
     <!-- Leaflet js, must be included after CSS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -70,6 +71,8 @@
                 .setContent(elem)
                 .openOn(map);
         });
+
+        map.locate({ setView: true, maxZoom: 16 });
     </script>
 </body>
 
