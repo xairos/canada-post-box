@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Canada Post Box Locator</title>
+    <meta name="description" content="View Canada Post box locations for Toronto and the GTA.">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -27,7 +28,7 @@
         const map = L.map('map').setView([43.678, -79.33], 13);
 
         // Use Google Maps tiles
-        const tiles = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+        const tiles = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
             maxZoom: 19,
             subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
         }).addTo(map);
@@ -40,8 +41,8 @@
 
         var markers = L.markerClusterGroup();
 
-        // draw featurecollection from toronto.geojson
-        fetch('toronto.geojson')
+        // draw featurecollection from static geoJSON file
+        fetch('gta_postboxes.geojson')
             .then(response => response.json())
             .then(data => {
                 L.geoJSON(data, {
